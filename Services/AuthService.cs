@@ -4,8 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 
 using LojaFlamengoApi.Models;
+using LojaFlamengoApi.Services.Interfaces;
 
-namespace FindMe.Domain.Services
+namespace LojaFlamengoApi.Services
 {
     public class AuthService : IAuthService
     {
@@ -16,88 +17,88 @@ namespace FindMe.Domain.Services
             _configuration = configuration;
         }
 
-        public async Task<UserAuthResponse> Login(UserLoginRequest request)
-        {
-            var user = await _userRepository.GetUser(request.Username);
+        // public async Task<UserAuthResponse> Login(UserLoginRequest request)
+        // {
+        //     var user = await _userRepository.GetUser(request.Username);
 
-            if (user is null)
-            {
-                throw new Exception("Usuário não encontrado!");
-            }
+        //     if (user is null)
+        //     {
+        //         throw new Exception("Usuário não encontrado!");
+        //     }
 
-            if (!VerifyPassswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
-            {
-                throw new Exception("Senha incorreta!");
-            }
+        //     if (!VerifyPassswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+        //     {
+        //         throw new Exception("Senha incorreta!");
+        //     }
 
-            try
-            {
-                var userToken = CreateToken(user);
-                await _userRepository.AssignToken(request.Username, userToken);
-                user.UserToken = userToken;
-                return user.ToUserResponse();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
+        //     try
+        //     {
+        //         var userToken = CreateToken(user);
+        //         await _userRepository.AssignToken(request.Username, userToken);
+        //         user.UserToken = userToken;
+        //         return user.ToUserResponse();
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         throw;
+        //     }
+        // }
 
-        public async Task Logout(long id)
-        {
-            //validar a request aqui
+        // public async Task Logout(long id)
+        // {
+        //     //validar a request aqui
 
-            var user = await _userRepository.GetUser(username);
+        //     var user = await _userRepository.GetUser(username);
 
-            if (user is null)
-                throw new Exception("Usuário não encontrado!");
+        //     if (user is null)
+        //         throw new Exception("Usuário não encontrado!");
 
-            if (String.IsNullOrEmpty(user.UserToken))
-                throw new Exception("Usuário não está logado!");
+        //     if (String.IsNullOrEmpty(user.UserToken))
+        //         throw new Exception("Usuário não está logado!");
 
-            await _userRepository.Logout(username);
+        //     await _userRepository.Logout(username);
 
-        }
+        // }
 
-        public async Task<UserAuthResponse> Register(UserRegisterRequest request)
-        {
-            try
-            {
-                request.Validate();
+        // public async Task<UserAuthResponse> Register(UserRegisterRequest request)
+        // {
+        //     try
+        //     {
+        //         request.Validate();
 
-                CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalet);
+        //         CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalet);
 
-                var user = request.ToUser();
-                user.PasswordHash = passwordHash;
-                user.PasswordSalt = passwordSalet;
-                user.UserToken = CreateToken(user);
+        //         var user = request.ToUser();
+        //         user.PasswordHash = passwordHash;
+        //         user.PasswordSalt = passwordSalet;
+        //         user.UserToken = CreateToken(user);
 
-                await _userRepository.CreateUser(user);
+        //         await _userRepository.CreateUser(user);
 
-                return user.ToUserResponse();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
+        //         return user.ToUserResponse();
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         throw;
+        //     }
+        // }
 
-        public async Task ResetPassword(UserResetPasswordRequest request)
-        {
-            //validar a request aqui
+        // public async Task ResetPassword(UserResetPasswordRequest request)
+        // {
+        //     //validar a request aqui
 
-            var user = await _userRepository.GetUser(request.Username);
+        //     var user = await _userRepository.GetUser(request.Username);
 
-            if (user is null)
-                throw new Exception("Usuário não encontrado!");
+        //     if (user is null)
+        //         throw new Exception("Usuário não encontrado!");
 
-            CreatePasswordHash(request.NewPassword, out byte[] passwordHash, out byte[] passwordSalet);
+        //     CreatePasswordHash(request.NewPassword, out byte[] passwordHash, out byte[] passwordSalet);
 
-            await _userRepository.ResetPassword(request.Username, passwordHash, passwordSalet);
-        }
+        //     await _userRepository.ResetPassword(request.Username, passwordHash, passwordSalet);
+        // }
 
 
-        private void CreatePasswordHash(string password, out byte[] passwodHash, out byte[] passwordSalt)
+        public void CreatePasswordHash(string password, out byte[] passwodHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512())
             {
@@ -106,7 +107,7 @@ namespace FindMe.Domain.Services
             }
         }
 
-        private bool VerifyPassswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        public bool VerifyPassswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512(passwordSalt))
             {
@@ -114,8 +115,8 @@ namespace FindMe.Domain.Services
                 return computeHash.SequenceEqual(passwordHash);
             }
         }
-        
-        private string CreateToken(User user)
+
+        public string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
             {

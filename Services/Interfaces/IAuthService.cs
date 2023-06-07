@@ -1,6 +1,6 @@
 ﻿using LojaFlamengoApi.Models;
 
-namespace LojaFlamengoApi.Services.Services.Interfaces
+namespace LojaFlamengoApi.Services.Interfaces
 {
     public interface IAuthService
     {
