@@ -1,80 +1,15 @@
-<<<<<<< HEAD
+
 using LojaFlamengoApi.Handlers.CreateItem;
 using LojaFlamengoApi.Handlers.GetItem;
 using LojaFlamengoApi.Handlers.ListItems;
-=======
 using LojaFlamengoApi.BaseResponses;
-using LojaFlamengoApi.Handlers.CreateItem;
 using LojaFlamengoApi.Handlers.DeleteItem;
-using LojaFlamengoApi.Handlers.GetItem;
-using LojaFlamengoApi.Handlers.ListItems;
-using LojaFlamengoApi.Handlers.LoginUser;
-using LojaFlamengoApi.Handlers.LogoutUser;
-using LojaFlamengoApi.Handlers.RegisterUser;
-using LojaFlamengoApi.Handlers.ResetUserPassword;
 using LojaFlamengoApi.Handlers.UpdateItem;
-using LojaFlamengoApi.Models;
->>>>>>> 73c4b2edec356b09b316ebc8e976d041fd52d3ac
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LojaFlamengoApi.Controllers
 {
-<<<<<<< HEAD
-   [Route("api/item")]
-   [ApiController]
-   public class ItemController : ControllerBase
-   {
-      public IMediator _mediator;
-
-      public ItemController(IMediator mediator)
-      {
-         _mediator = mediator;
-      }
-
-      [HttpPost("create")]
-      public async Task<ActionResult<CreateItemResponse>> Create(CreateItemRequest request)
-      {
-         try
-         {
-            var result = await _mediator.Send(request);
-            return Ok(result);
-         }
-         catch (Exception e)
-         {
-            return BadRequest(e.Message);
-         }
-      }
-
-      [HttpGet("list")]
-      public async Task<ActionResult<List<ListItemsResponse>>> Login(ListItemsRequest request)
-      {
-         try
-         {
-            var result = await _mediator.Send(request);
-            return Ok(result);
-         }
-         catch (Exception e)
-         {
-            return BadRequest(e.Message);
-         }
-      }
-
-      [HttpGet("get")]
-      public async Task<ActionResult<GetItemResponse>> Logout(GetItemHandler request)
-      {
-         try
-         {
-            await _mediator.Send(request);
-            return Ok();
-         }
-         catch (Exception e)
-         {
-            return BadRequest(e.Message);
-         }
-      }
-   }
-=======
     [Route("item")]
     [ApiController]
     public class ItemController : ControllerBase
@@ -159,5 +94,4 @@ namespace LojaFlamengoApi.Controllers
             }
         }
     }
->>>>>>> 73c4b2edec356b09b316ebc8e976d041fd52d3ac
 }

@@ -7,7 +7,6 @@
         public double? Price { get; set; }
         public string? Tag { get; set; }
         public string? Image { get; set; }
-        public bool? IsActive { get; set; }
 
         public ItemResponse() { }
 
@@ -18,7 +17,6 @@
             Price = response.Price;
             Tag = response.Tag;
             Image = response.Image;
-            IsActive = response.IsActive;
         }
     }
 }

@@ -18,3 +18,12 @@ create table if not exists Items(
 	Image text not null,
 	IsActive bool not null
 );
+
+create table if not exists Orders(
+	id serial primary key,
+    PurchaseTime timestamp not null,
+	PurchasedItemsIds varchar(255) not null,
+	userId integer not null,
+	constraint orders_user_fk foreign key (userId) references Users(id)
+);
+
