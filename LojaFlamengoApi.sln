@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaFlamengoApi", "LojaFlamengoApi.csproj", "{97012F48-94D4-4220-878C-867F3AC576DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97012F48-94D4-4220-878C-867F3AC576DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97012F48-94D4-4220-878C-867F3AC576DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97012F48-94D4-4220-878C-867F3AC576DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97012F48-94D4-4220-878C-867F3AC576DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DF67FBC-2BAB-4C42-8D41-2517D5048C3F}
+	EndGlobalSection
+EndGlobal
