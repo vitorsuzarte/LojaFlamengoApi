@@ -1,4 +1,4 @@
-﻿using LojaFlamengoApi.BaseResponsess;
+﻿using LojaFlamengoApi.BaseResponses;  
 using LojaFlamengoApi.Handlers.RegisterUser;
 using LojaFlamengoApi.Handlers.UpdateUser;
 using LojaFlamengoApi.Models;

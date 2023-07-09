@@ -1,4 +1,4 @@
-﻿using LojaFlamengoApi.BaseResponsess;
+﻿using LojaFlamengoApi.BaseResponses;
 
 namespace LojaFlamengoApi.Handlers.UpdateUser
 {

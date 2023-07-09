@@ -1,5 +1,5 @@
-﻿using LojaFlamengoApi.BaseResponsess;
-using LojaFlamengoApi.Handlers.CreateItem;
+﻿using LojaFlamengoApi.BaseResponses;
+using LojaFlamengoApi.Handlers.CreateItem ;
 using LojaFlamengoApi.Handlers.RegisterUser;
 using LojaFlamengoApi.Handlers.UpdateItem;
 using LojaFlamengoApi.Models;

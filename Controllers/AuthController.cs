@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LojaFlamengoApi.Controllers
 {
-    [Route("api/[controller]")]
+   [Route("api/user")]
    [ApiController]
-   public class AuthController : ControllerBase
+   public class UserController : ControllerBase
    {
       public IMediator _mediator;
 
-      public AuthController(IMediator mediator)
+      public UserController(IMediator mediator)
       {
          _mediator = mediator;
       }

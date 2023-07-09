@@ -1,5 +1,4 @@
-﻿using LojaFlamengoApi.BaseResponsess;
-using MediatR;
+﻿using MediatR;
 using System.ComponentModel.DataAnnotations;
 
 namespace LojaFlamengoApi.Handlers.CreateItem

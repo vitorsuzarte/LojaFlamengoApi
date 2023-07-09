@@ -23,7 +23,7 @@ namespace LojaFlamengoApi.Handlers.LoginUser
          {
             request.Validate();
 
-            var user = await _userRepository.GetUser(request.Email);
+            var user = await _userRepository.GetUserByEmail(request.Email);
 
             if (user is null)
             {
