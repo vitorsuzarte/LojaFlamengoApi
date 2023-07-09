@@ -32,14 +32,14 @@ namespace LojaFlamengoApi.Handlers.LoginUser
                     throw new Exception("Senha incorreta!");
 
                 if (user.UserToken is not null)
-                    return new LoginUserResponse(user.ToUserResponse());
+                    return new LoginUserResponse(user.ToUserResponse(), user.Email);
 
                 var userToken = _authService.CreateToken(user);
                 await _userRepository.AssignToken(request.Email, userToken);
                 user.UserToken = userToken;
                 user.IsActive = true;
 
-                return new LoginUserResponse(user.ToUserResponse());
+                return new LoginUserResponse(user.ToUserResponse(), user.Email);
             }
             catch (Exception ex)
             {

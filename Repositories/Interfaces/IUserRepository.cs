@@ -6,7 +6,7 @@ namespace LojaFlamengoApi.Repositories.Interfaces
    {
       public Task<User> GetUserByEmail(string email);
       public Task<User> GetUserById(long userId);
-      public Task CreateUser(User user);
+      public Task<int> CreateUser(User user);
       public Task AssignToken(string username, string userToken);
       public Task Logout(string username);
       public Task ResetPassword(string username, byte[] passwordHash, byte[] passwordSalt);

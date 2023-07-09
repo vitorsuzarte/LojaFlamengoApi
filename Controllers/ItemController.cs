@@ -3,18 +3,13 @@ using LojaFlamengoApi.Handlers.CreateItem;
 using LojaFlamengoApi.Handlers.DeleteItem;
 using LojaFlamengoApi.Handlers.GetItem;
 using LojaFlamengoApi.Handlers.ListItems;
-using LojaFlamengoApi.Handlers.LoginUser;
-using LojaFlamengoApi.Handlers.LogoutUser;
-using LojaFlamengoApi.Handlers.RegisterUser;
-using LojaFlamengoApi.Handlers.ResetUserPassword;
 using LojaFlamengoApi.Handlers.UpdateItem;
-using LojaFlamengoApi.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LojaFlamengoApi.Controllers
 {
-    [Route("item")]
+   [Route("item")]
     [ApiController]
     public class ItemController : ControllerBase
     {

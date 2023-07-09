@@ -12,7 +12,7 @@ namespace LojaFlamengoApi.Mappers
             new UserResponse()
             {
                 Id = user.Id,
-                Firstame = user.FirstName,
+                FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserToken = user.UserToken,
             };

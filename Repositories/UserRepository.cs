@@ -62,13 +62,14 @@ namespace LojaFlamengoApi.Repositories
             return result;
         }
 
-        public async Task CreateUser(User user)
+        public async Task<int> CreateUser(User user)
         {
             var query = @"INSERT INTO users 
                           (firstName, lastName, cpf, email, phone, passwordHash, passwordSalt, userToken, isActive)
                           values 
-                          (@firstName, @lastName, @cpf, @email, @phone, @passwordHash, @passwordSalt, @userToken, @isActive)";
-            await _connection.QueryAsync(query, param: new
+                          (@firstName, @lastName, @cpf, @email, @phone, @passwordHash, @passwordSalt, @userToken, @isActive)
+                           returning Id;";
+            var id = await _connection.QueryFirstAsync<int>(query, param: new
             {
                 firstName = user.FirstName,
                 lastName = user.LastName,
@@ -80,6 +81,7 @@ namespace LojaFlamengoApi.Repositories
                 userToken = user.UserToken,
                 isActive = user.IsActive
             });
+         return id;
         }
 
         public async Task ResetPassword(string username, byte[] passwordHash, byte[] passwordSalt)

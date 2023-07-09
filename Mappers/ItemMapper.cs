@@ -35,7 +35,6 @@ namespace LojaFlamengoApi.Mappers
                 Price = value.Price,
                 Tag = value.Tag,
                 Image = value.Image,
-                IsActive = value.IsActive
             };
     }
 }

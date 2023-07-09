@@ -7,13 +7,13 @@
         public UserResponse(UserResponse response)
         {
             Id = response.Id;
-            Firstame = response.Firstame;
+            FirstName = response.FirstName;
             LastName = response.LastName;
             UserToken = response.UserToken;
         }
 
         public long? Id { get; set; }
-        public string? Firstame { get; set; }
+        public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? UserToken { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using LojaFlamengoApi.Models;
 using LojaFlamengoApi.Repositories.Interfaces;
+using Microsoft.Win32;
 using System.Data;
 
 namespace LojaFlamengoApi.Repositories
@@ -51,7 +52,7 @@ namespace LojaFlamengoApi.Repositories
             return item;
         }
 
-        public async Task<IEnumerable<Item>> ListItems(int itemsPerPage, int pages)
+        public async Task<IEnumerable<Item>> ListItems(int pages = 1, int itemsPerPage = 50)
         {
             var query = @"SELECT * FROM items";
             var items = await _connection.QueryAsync<Item>(query);
@@ -76,6 +77,16 @@ namespace LojaFlamengoApi.Repositories
                 tag = item.Tag,
                 image = item.Image,
                 itemId = id
+            });
+        }
+
+        public async Task<IEnumerable<Item>> ListItemsByIdList(List<long> ids)
+        {
+            string query = "SELECT * FROM Items WHERE Id IN @Ids";
+
+            return await _connection.QueryAsync<Item>(query, param: new
+            {
+                Ids = ids
             });
         }
     }
