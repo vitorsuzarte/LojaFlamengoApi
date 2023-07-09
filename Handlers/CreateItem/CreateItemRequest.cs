@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 ﻿using MediatR;
-=======
-﻿using LojaFlamengoApi.BaseResponses;
-using MediatR;
->>>>>>> 73c4b2edec356b09b316ebc8e976d041fd52d3ac
 using System.ComponentModel.DataAnnotations;
 
 namespace LojaFlamengoApi.Handlers.CreateItem

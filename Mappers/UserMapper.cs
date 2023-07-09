@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-﻿using LojaFlamengoApi.BaseResponses;  
-=======
-﻿using LojaFlamengoApi.BaseResponses;
->>>>>>> 73c4b2edec356b09b316ebc8e976d041fd52d3ac
+using LojaFlamengoApi.BaseResponses;
 using LojaFlamengoApi.Handlers.RegisterUser;
 using LojaFlamengoApi.Handlers.UpdateUser;
 using LojaFlamengoApi.Models;
-using System.Runtime.CompilerServices;
 
 namespace LojaFlamengoApi.Mappers
 {
-    public static class UserMapper
+   public static class UserMapper
     {
         public static UserResponse ToUserResponse(this User user) =>
             new UserResponse()

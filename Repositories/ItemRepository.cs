@@ -56,10 +56,7 @@ namespace LojaFlamengoApi.Repositories
         {
             var query = @"SELECT * FROM items";
             var items = await _connection.QueryAsync<Item>(query);
-            var itemsToSkip = itemsPerPage * (pages - 1);
-            return items
-               .Skip(itemsToSkip)
-               .Take(itemsPerPage);
+         return items;
         }
 
         public async Task UpdateItem(long id, Item item)
