@@ -4,22 +4,22 @@ using MediatR;
 
 namespace LojaFlamengoApi.Handlers.UpdateUser
 {
-   public class UpdateUserHandler : IRequestHandler<UpdateUserRequest, UpdateUserResponse>
-   {
-      public readonly IUserRepository _userRepository;
+    public class UpdateUserHandler : IRequestHandler<UpdateUserRequest, UpdateUserResponse>
+    {
+        public readonly IUserRepository _userRepository;
 
-      public UpdateUserHandler(IUserRepository userRepository)
-      {
-         _userRepository = userRepository;
-      }
+        public UpdateUserHandler(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
 
-      public async Task<UpdateUserResponse> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
-      {
-         var user = request.ToUser();
+        public async Task<UpdateUserResponse> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
+        {
+            var user = request.ToUser();
 
-         var updatedUser = await _userRepository.UpdateUser(user);
+            var updatedUser = await _userRepository.UpdateUser(user);
 
-         return (UpdateUserResponse) updatedUser.ToUserResponse();
-      }
-   }
+            return new UpdateUserResponse(updatedUser.ToUserResponse());
+        }
+    }
 }

@@ -2,8 +2,11 @@
 
 namespace LojaFlamengoApi.Handlers.LoginUser
 {
-   public class LoginUserResponse : UserResponse
-   {
-         
-   }
+    public class LoginUserResponse : UserResponse
+    {
+        public LoginUserResponse(UserResponse response) : base(response)
+        {
+
+        }
+    }
 }
